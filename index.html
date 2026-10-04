@@ -1,0 +1,1720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>For My Boo ♡</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --pink: #e889a8;
+      --light-pink: #f9dce6;
+      --dark-pink: #6b2947;
+      --cream: #fff3f6;
+      --background: #170914;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: Georgia, "Times New Roman", serif;
+      color: white;
+      overflow-x: hidden;
+
+      background:
+        radial-gradient(
+          circle at 20% 20%,
+          rgba(255, 180, 210, 0.12),
+          transparent 30%
+        ),
+        radial-gradient(
+          circle at 80% 80%,
+          rgba(220, 100, 150, 0.12),
+          transparent 30%
+        ),
+        linear-gradient(
+          135deg,
+          #180914,
+          #321126,
+          #160811
+        );
+    }
+
+    /* =========================
+       FLOATING HEARTS
+    ========================= */
+
+    .hearts {
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .heart {
+      position: absolute;
+      bottom: -50px;
+      opacity: 0;
+      color: rgba(255, 190, 210, 0.65);
+      animation: floatUp linear forwards;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+      }
+
+      15% {
+        opacity: 0.65;
+      }
+
+      85% {
+        opacity: 0.65;
+      }
+
+      100% {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* =========================
+       OPENING SCREEN
+    ========================= */
+
+    .opening {
+      position: fixed;
+      inset: 0;
+      z-index: 50;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      padding: 25px;
+      text-align: center;
+
+      background:
+        radial-gradient(
+          circle at center,
+          #42182f,
+          #180914 70%
+        );
+
+      transition:
+        opacity 0.8s ease,
+        visibility 0.8s ease;
+    }
+
+    .opening.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .opening-content {
+      width: min(550px, 100%);
+      animation: openingAppear 1.2s ease;
+    }
+
+    @keyframes openingAppear {
+      from {
+        opacity: 0;
+        transform: translateY(25px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .opening-heart {
+      font-size: 65px;
+      margin-bottom: 20px;
+      animation: heartbeat 1.8s infinite;
+    }
+
+    @keyframes heartbeat {
+      0%, 100% {
+        transform: scale(1);
+      }
+
+      15% {
+        transform: scale(1.15);
+      }
+
+      30% {
+        transform: scale(1);
+      }
+
+      45% {
+        transform: scale(1.08);
+      }
+    }
+
+    .opening-small {
+      color: #dcaabd;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+      margin-bottom: 18px;
+    }
+
+    .opening h1 {
+      font-size: clamp(38px, 9vw, 65px);
+      font-weight: normal;
+      margin-bottom: 18px;
+    }
+
+    .opening-text {
+      color: #e6cbd5;
+      font-size: 18px;
+      line-height: 1.7;
+      margin-bottom: 35px;
+    }
+
+    .open-button {
+      border: none;
+      padding: 17px 34px;
+
+      border-radius: 50px;
+
+      background: linear-gradient(
+        135deg,
+        #f2abc2,
+        #d9789a
+      );
+
+      color: #351525;
+
+      font-size: 16px;
+      font-weight: bold;
+
+      cursor: pointer;
+
+      box-shadow:
+        0 12px 35px rgba(220, 110, 150, 0.3);
+
+      transition: 0.25s ease;
+    }
+
+    .open-button:hover {
+      transform: translateY(-4px) scale(1.02);
+
+      box-shadow:
+        0 18px 45px rgba(220, 110, 150, 0.45);
+    }
+
+    /* =========================
+       MAIN PAGE
+    ========================= */
+
+    .container {
+      position: relative;
+      z-index: 2;
+
+      width: min(900px, 92%);
+      min-height: 100vh;
+
+      margin: auto;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      padding: 45px 0;
+
+      text-align: center;
+    }
+
+    .intro {
+      margin-bottom: 5px;
+    }
+
+    .small-title {
+      color: #dfafc0;
+      font-size: 13px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    h2 {
+      font-size: clamp(35px, 8vw, 60px);
+      font-weight: normal;
+      margin-bottom: 12px;
+    }
+
+    .subtitle {
+      max-width: 560px;
+      margin: auto;
+
+      color: #dfc3cd;
+
+      font-size: 17px;
+      line-height: 1.6;
+    }
+
+    /* =========================
+       JAR
+    ========================= */
+
+    .jar-area {
+      width: 300px;
+      height: 360px;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      position: relative;
+    }
+
+    .jar {
+      position: relative;
+
+      width: 190px;
+      height: 235px;
+
+      border: 3px solid rgba(255,255,255,0.45);
+
+      border-radius:
+        30px
+        30px
+        42px
+        42px;
+
+      background:
+        linear-gradient(
+          120deg,
+          rgba(255,255,255,0.17),
+          rgba(255,180,210,0.05)
+        );
+
+      box-shadow:
+        inset 0 0 25px rgba(255,255,255,0.08),
+        0 25px 65px rgba(0,0,0,0.4);
+
+      backdrop-filter: blur(6px);
+
+      cursor: pointer;
+
+      transition: 0.3s ease;
+    }
+
+    .jar:hover {
+      transform: translateY(-6px) scale(1.025);
+    }
+
+    .jar-lid {
+      position: absolute;
+
+      width: 145px;
+      height: 30px;
+
+      left: 50%;
+      top: -28px;
+
+      transform: translateX(-50%);
+
+      border-radius: 9px 9px 5px 5px;
+
+      background:
+        linear-gradient(
+          #dba6ba,
+          #8d526c
+        );
+
+      border: 2px solid rgba(255,255,255,0.35);
+    }
+
+    .jar-lid::after {
+      content: "";
+
+      position: absolute;
+
+      width: 120px;
+      height: 5px;
+
+      top: 8px;
+      left: 10px;
+
+      border-radius: 10px;
+
+      background: rgba(255,255,255,0.18);
+    }
+
+    .jar-label {
+      position: absolute;
+
+      left: 50%;
+      top: 88px;
+
+      transform: translateX(-50%);
+
+      width: 138px;
+
+      padding: 16px 10px;
+
+      background: rgba(255,235,240,0.92);
+
+      color: #5b253e;
+
+      border-radius: 8px;
+
+      box-shadow:
+        0 6px 18px rgba(0,0,0,0.2);
+    }
+
+    .jar-label strong {
+      display: block;
+
+      font-size: 19px;
+
+      margin-bottom: 5px;
+    }
+
+    .jar-label span {
+      font-size: 12px;
+    }
+
+    /* Paper pieces */
+
+    .paper {
+      position: absolute;
+
+      width: 42px;
+      height: 28px;
+
+      background: #f7dce5;
+
+      border-radius: 3px;
+
+      opacity: 0.9;
+
+      box-shadow:
+        0 2px 5px rgba(0,0,0,0.2);
+    }
+
+    .paper:nth-child(1) {
+      left: 23px;
+      bottom: 24px;
+      transform: rotate(-18deg);
+    }
+
+    .paper:nth-child(2) {
+      left: 73px;
+      bottom: 16px;
+      transform: rotate(10deg);
+    }
+
+    .paper:nth-child(3) {
+      right: 23px;
+      bottom: 27px;
+      transform: rotate(-8deg);
+    }
+
+    .paper:nth-child(4) {
+      left: 40px;
+      bottom: 58px;
+      transform: rotate(25deg);
+    }
+
+    .paper:nth-child(5) {
+      right: 43px;
+      bottom: 58px;
+      transform: rotate(-25deg);
+    }
+
+    /* =========================
+       BUTTON
+    ========================= */
+
+    .pick-button {
+      border: none;
+
+      padding: 16px 32px;
+
+      border-radius: 50px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #f2a9c0,
+          #d8799b
+        );
+
+      color: #351525;
+
+      font-size: 16px;
+      font-weight: bold;
+
+      cursor: pointer;
+
+      box-shadow:
+        0 10px 30px rgba(210,100,140,0.25);
+
+      transition: 0.25s ease;
+    }
+
+    .pick-button:hover {
+      transform: translateY(-3px);
+
+      box-shadow:
+        0 15px 38px rgba(210,100,140,0.4);
+    }
+
+    .pick-button:active {
+      transform: scale(0.96);
+    }
+
+    .counter {
+      margin-top: 12px;
+
+      font-size: 13px;
+
+      color: #cfaebb;
+    }
+
+    .footer {
+      margin-top: 20px;
+
+      color: #a98291;
+
+      font-size: 13px;
+
+      font-style: italic;
+    }
+
+    /* =========================
+       NOTE POPUP
+    ========================= */
+
+    .note-overlay {
+      position: fixed;
+
+      inset: 0;
+
+      z-index: 30;
+
+      display: none;
+
+      align-items: center;
+      justify-content: center;
+
+      padding: 25px;
+
+      background:
+        rgba(8,3,10,0.74);
+
+      backdrop-filter: blur(9px);
+    }
+
+    .note-overlay.show {
+      display: flex;
+
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    .note-card {
+      position: relative;
+
+      width: min(530px, 100%);
+
+      min-height: 330px;
+
+      padding:
+        55px
+        35px
+        35px;
+
+      background: #fff1f5;
+
+      color: #542238;
+
+      border-radius: 12px;
+
+      box-shadow:
+        0 30px 80px rgba(0,0,0,0.5);
+
+      transform: rotate(-1deg);
+
+      animation:
+        noteAppear
+        0.45s
+        cubic-bezier(.2,.8,.2,1);
+    }
+
+    @keyframes noteAppear {
+      from {
+        transform:
+          translateY(60px)
+          rotate(-4deg)
+          scale(0.85);
+
+        opacity: 0;
+      }
+
+      to {
+        transform:
+          translateY(0)
+          rotate(-1deg)
+          scale(1);
+
+        opacity: 1;
+      }
+    }
+
+    .note-card::before {
+      content: "♡";
+
+      position: absolute;
+
+      top: 15px;
+      left: 20px;
+
+      font-size: 25px;
+
+      color: #d8789a;
+    }
+
+    .note-number {
+      font-family: Arial, sans-serif;
+
+      font-size: 11px;
+
+      letter-spacing: 3px;
+
+      text-transform: uppercase;
+
+      color: #a8657d;
+
+      margin-bottom: 25px;
+    }
+
+    .note-text {
+      font-size: clamp(21px, 5vw, 29px);
+
+      line-height: 1.55;
+    }
+
+    .close-button {
+      position: absolute;
+
+      top: 10px;
+      right: 15px;
+
+      border: none;
+
+      background: transparent;
+
+      color: #7b4059;
+
+      font-size: 28px;
+
+      cursor: pointer;
+    }
+
+    .another-button {
+      margin-top: 30px;
+
+      padding: 11px 22px;
+
+      border:
+        1px solid #c9829c;
+
+      border-radius: 30px;
+
+      background: transparent;
+
+      color: #71344f;
+
+      cursor: pointer;
+
+      font-family: inherit;
+
+      transition: 0.2s;
+    }
+
+    .another-button:hover {
+      background: #f6d7e1;
+    }
+
+    /* =========================
+       FINISHED MESSAGE
+    ========================= */
+
+    .finished {
+      display: none;
+
+      position: fixed;
+      inset: 0;
+
+      z-index: 40;
+
+      align-items: center;
+      justify-content: center;
+
+      padding: 25px;
+
+      text-align: center;
+
+      background:
+        radial-gradient(
+          circle,
+          #451a32,
+          #180914 70%
+        );
+    }
+
+    .finished.show {
+      display: flex;
+      animation: fadeIn 0.8s ease;
+    }
+
+    .finished-content {
+      max-width: 600px;
+    }
+
+    .finished-heart {
+      font-size: 65px;
+
+      margin-bottom: 20px;
+    }
+
+    .finished h3 {
+      font-size: clamp(32px, 7vw, 55px);
+
+      font-weight: normal;
+
+      margin-bottom: 20px;
+    }
+
+    .finished p {
+      color: #e3c7d1;
+
+      font-size: 18px;
+
+      line-height: 1.8;
+    }
+
+    .reset-text {
+      display: block;
+
+      margin-top: 30px;
+
+      color: #a98493;
+
+      font-size: 12px;
+    }
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 500px) {
+
+      .container {
+        padding-top: 30px;
+      }
+
+      .jar-area {
+        height: 320px;
+      }
+
+      .jar {
+        transform: scale(0.9);
+      }
+
+      .jar:hover {
+        transform: scale(0.92);
+      }
+
+      .subtitle {
+        font-size: 15px;
+      }
+
+      .note-card {
+        min-height: 290px;
+
+        padding:
+          48px
+          25px
+          30px;
+      }
+
+      .opening-text {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ==========================================
+       FLOATING HEARTS
+  =========================================== -->
+
+  <div class="hearts" id="hearts"></div>
+
+
+  <!-- ==========================================
+       SECRET OPENING SCREEN
+  =========================================== -->
+
+  <section class="opening" id="opening">
+
+    <div class="opening-content">
+
+      <div class="opening-heart">
+        ♡
+      </div>
+
+      <div class="opening-small">
+        A little something for
+      </div>
+
+      <h1>
+        My Boo
+      </h1>
+
+      <p class="opening-text">
+        Hey you...<br>
+        I made something for you.<br><br>
+        It's nothing huge.<br>
+        Just little reminders of why you're so special to me.
+      </p>
+
+      <button
+        class="open-button"
+        id="openButton"
+      >
+        Click me ♡
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- ==========================================
+       MAIN WEBSITE
+  =========================================== -->
+
+  <main class="container">
+
+    <section class="intro">
+
+      <div class="small-title">
+        For the days you miss me
+      </div>
+
+      <h2>
+        Reasons I Love You
+      </h2>
+
+      <p class="subtitle">
+        little reminders for the moments when
+        distance feels a little too far.
+      </p>
+
+    </section>
+
+
+    <!-- ==========================================
+         JAR
+    =========================================== -->
+
+    <div class="jar-area">
+
+      <div class="jar" id="jar">
+
+        <div class="jar-lid"></div>
+
+        <div class="paper"></div>
+        <div class="paper"></div>
+        <div class="paper"></div>
+        <div class="paper"></div>
+        <div class="paper"></div>
+
+        <div class="jar-label">
+
+          <strong>
+            My Boo ♡
+          </strong>
+
+          <span>
+            little reasons
+          </span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <button
+      class="pick-button"
+      id="pickButton"
+    >
+      Boop me 💌
+    </button>
+
+
+    <div class="counter">
+
+      <span id="noteCount">
+        100
+      </span>
+
+      reasons still waiting for you
+
+    </div>
+
+
+    <div class="footer">
+      Until I can tell you these things in person.
+    </div>
+
+  </main>
+
+
+  <!-- ==========================================
+       NOTE POPUP
+  =========================================== -->
+
+  <div
+    class="note-overlay"
+    id="noteOverlay"
+  >
+
+    <div class="note-card">
+
+      <button
+        class="close-button"
+        id="closeButton"
+      >
+        ×
+      </button>
+
+      <div
+        class="note-number"
+        id="noteNumber"
+      >
+        Reason #1
+      </div>
+
+      <div
+        class="note-text"
+        id="noteText"
+      >
+        Because somehow, even from miles away,
+        you still feel like home.
+      </div>
+
+      <button
+        class="another-button"
+        id="anotherButton"
+      >
+        Give me another ♡
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- ==========================================
+       FINISHED SCREEN
+  =========================================== -->
+
+  <section
+    class="finished"
+    id="finished"
+  >
+
+    <div class="finished-content">
+
+      <div class="finished-heart">
+        ❤️
+      </div>
+
+      <h3>
+        You found all 100.
+      </h3>
+
+      <p>
+        And somehow, 100 still doesn't feel like enough.
+        <br><br>
+
+        If I wrote down every little reason,
+        we'd probably need a much bigger jar.
+        <br><br>
+
+        So here's the 101st reason:
+        <br><br>
+
+        <strong>
+          Because you're you.
+        </strong>
+        <br><br>
+
+        And that's more than enough for me.
+      </p>
+
+      <span class="reset-text">
+        These memories are saved on this device ♡
+      </span>
+
+    </div>
+
+  </section>
+
+
+  <script>
+
+    /* =====================================================
+       100 LOVE NOTES
+       =====================================================
+
+       Notes 1-5:
+       Sweet / introductory
+
+       Notes 6-100:
+       Progressively more personal,
+       emotionally intimate and affectionate.
+    */
+
+
+    const loveNotes = [
+
+      /* -------------------------------
+         1 - 5
+      ------------------------------- */
+
+      "Because somehow, even from miles away, you still feel like home.",
+
+      "Because your smile has a way of making even my worst days feel a little lighter.",
+
+      "Because I love the little things about you that you probably don't even realize I notice.",
+
+      "Because talking to you can make hours disappear without me even noticing.",
+
+      "I wish you were here right now. I’d just want to sit beside you, hold your hand, and forget about everything else for a while. ❤️ Even with all these miles between us, somehow you still manage to make my day better just by being you. I miss you more than I can put into words..",
+
+
+      /* -------------------------------
+         6 - 20
+         More personal
+      ------------------------------- */
+
+      "Because I catch myself smiling at my phone when I see your name appear.",
+
+      "Because your voice can make a long day feel strangely easier.",
+
+      "Because I love hearing about the tiny, completely ordinary parts of your day.",
+
+      "Because you somehow became one of the first people I want to tell everything to.",
+
+      "Because even a simple good morning from you can change the mood of my entire day.",
+
+      "Because you make me excited about things I haven't even experienced yet.",
+
+      "Because I love the way you can make me laugh without even trying.",
+
+      "Because you make distance feel like something we're going through together, rather than something keeping us apart.",
+
+      "Because I love knowing that somewhere in this huge world, there is you.",
+
+      "Because you make me want to remember the smallest moments.",
+
+      "Because I love the little memories that belong only to us.",
+
+      "Because even our random conversations somehow become moments I want to keep.",
+
+      "Because I love the way you slowly became part of my everyday thoughts.",
+
+      "Because you make me look forward to tomorrow.",
+
+      "Sometimes I close my eyes and imagine you right beside me, and for a moment, the distance doesn’t feel so big. I miss your presence, your voice, your little ways of making everything feel better. ❤️",
+
+
+      /* -------------------------------
+         21 - 40
+         Deeper emotional connection
+      ------------------------------- */
+
+      "Because I want to know the stories behind the things that make you smile.",
+
+      "Because I care about how your day went, even when nothing particularly exciting happened.",
+
+      "Because your happiness genuinely matters to me.",
+
+      "Because I want to be someone you can talk to when your day isn't going the way you hoped.",
+
+      "Because I love the person you are when you don't feel like you have to impress anyone.",
+
+      "Because I feel lucky whenever you choose to share a little piece of your world with me.",
+
+      "Because you make me want to be more patient, more understanding, and more thoughtful.",
+
+      "I wish distance didn’t exist tonight. I’d just want you beside me, close enough that we could talk about absolutely nothing and still feel like we had everything. ❤️",
+
+      "Because even when we don't have much time, the little time we get matters to me.",
+
+      "Because you make me appreciate the little things I might normally overlook.",
+
+      "Because I don't just miss having you around; I miss the feeling of having you around.",
+
+      "Because you have become someone whose presence I genuinely look forward to.",
+
+      "Because I love hearing you talk about the things you're passionate about.",
+
+      "I miss the comfort of knowing you’re right there. Until I can see you again, I’ll keep holding onto every little moment we share.",
+
+      "Because I want to remember the little details you tell me, even the ones you think are unimportant.",
+
+      "Because I love the feeling of knowing that someone as wonderful as you exists in my life.",
+
+      "Because you make me want to create memories instead of just collecting days.",
+
+      "Because I want to celebrate your good moments with you.",
+
+      "Because I want to be there when things aren't so easy too.",
+
+      "I wish I could pause everything for a while and just have you here with me. No phones, no distance, no goodbyes — just us talking, laughing, and enjoying each other’s company. ❤️",
+
+
+      /* -------------------------------
+         41 - 60
+         Romantic / intimate emotionally
+      ------------------------------- */
+
+      "You have no idea how much I look forward to the day when “I miss you” finally becomes “I’m right here.”",
+
+      "Because there are moments when all I want is to hear your voice and forget everything else for a while.",
+
+      "Because I love imagining the day when seeing you won't require a screen between us.",
+
+      "Because I look forward to the little things we'll eventually get to do together.",
+
+      "Because sometimes I wish I could turn a message into a hug.",
+
+      "Sometimes I really wish I could reach through the screen and give you the biggest hug. ❤️",
+
+      "Because I love the thought of sitting beside you and not needing to say anything at all.",
+
+      "Because one day I want ordinary moments with you to become my favorite memories.",
+
+      "Because I can't wait for the kind of day where I don't have to say goodbye through a screen.",
+
+      "Because I love imagining us laughing about how dramatic the distance once felt.",
+
+      "just know that somewhere out here, there’s someone thinking about you, smiling because of you, and counting down the moments until we can finally be together in the same place.",
+
+      "Because your presence is something I appreciate even more precisely because I can't always have it.",
+
+      "Because I love the thought of having an entire day together with nowhere else we need to be.",
+
+      "Because I want to know what it feels like to sit beside you while we both do absolutely nothing.",
+
+      "Because I want to hear your laugh without a speaker between us.",
+
+      "I miss you in those little moments when I wish I had someone beside me to share them with. I wish I could just sit next to you, listen to you talk, and make you laugh until we forget what time it is. ❤️",
+
+      "Because I look forward to the first moment we get to see each other after missing each other for so long.",
+
+      "Because some days I don't need a big romantic moment; I just wish you were sitting next to me.",
+
+      "Because I love the idea of making little traditions that belong only to us.",
+
+      "Because I want our future memories to include all the ordinary moments distance currently takes away from us.",
+
+
+      /* -------------------------------
+         61 - 80
+         Deeper affection
+      ------------------------------- */
+
+      "Because there are days when I wish I could simply sit beside you and let the world be quiet for a while.",
+
+      "Because I love the comfort I feel when I know you're there, even if you're far away.",
+
+      "Because you have a way of making me feel less alone without even being in the same room.",
+
+      "If you were here right now, I wouldn’t need anything special. I’d just want to be beside you, talking about random things, laughing at stupid jokes, and enjoying the kind of silence that only feels comfortable with someone you really care about. ❤️",
+
+      "Because sometimes hearing your name is enough to put a smile on my face.",
+
+      "Because I love knowing that our little conversations can become someone's favorite part of the day—including mine.",
+
+      "Because I want to know every version of you, not just the happy and easy ones.",
+
+      "Because I want you to feel appreciated even on the days when you don't feel particularly amazing.",
+
+      "The hardest part about loving someone from far away is having so many moments where all you want is their presence. ❤️",
+
+      "Because I love the thought of being someone who makes you feel safe enough to be completely yourself.",
+
+      "Because I want to know the little things that make you feel cared for.",
+
+      "Because I want to remember the things that make you laugh until you can't stop.",
+
+      "Because I want to be there for the celebrations, the quiet evenings, the silly moments, and everything between them.",
+
+      "Because I love how much meaning a simple conversation with you can carry.",
+
+      "Because sometimes the thought of you is enough to make a completely ordinary moment feel special.",
+
+      "Because I love that we can create something meaningful even when miles are between us.",
+
+      "Because I want our distance to become a chapter we look back on rather than the whole story.",
+
+      "Because I love the thought of eventually having memories that don't begin with 'remember when we were apart?'",
+
+      "Because I want to keep learning new things about you even years from now.",
+
+      "Because somehow, knowing you has made the future feel more interesting.",
+
+
+      /* -------------------------------
+         81 - 95
+         Very personal / affectionate
+      ------------------------------- */
+
+      "I wish I could be there to hear your laugh in person, see your smile, and spend an ordinary day with you. Somehow, even an ordinary day would feel special if it were with you.",
+
+      "Because I want to know what your happiest days look like and be lucky enough to witness some of them.",
+
+      "Because I want to be there for the moments when you're proud of yourself.",
+
+      "Because I want to hear the stories you'll tell me years from now about the things you did and the places you went.",
+
+      "Because I love the idea of having inside jokes that still make us laugh long after everyone else has forgotten them.",
+
+      "Because I want to collect little memories with you until we have too many to count.",
+
+      "Because I want to know what your laugh sounds like when we're both laughing at something completely ridiculous in the same room.",
+
+      "Until then, I’ll keep cherishing every call, every message, every laugh, and every little moment that makes you feel a little closer to me.",
+
+      "Because sometimes I don't want anything exciting; I just want your company.",
+
+      "Because I love the idea of being close enough that a simple look can say what words don't.",
+
+      "Because I want to be the person who reminds you that you are appreciated.",
+
+      "Because I want you to have someone who genuinely celebrates the little victories with you.",
+
+      "Because I love how much warmth you can bring into my life without even trying.",
+
+      "Because the thought of seeing you after a long time apart makes ordinary days feel worth waiting for.",
+
+      "Because I want to keep choosing you in all the little ways that matter.",
+
+
+      /* -------------------------------
+         96 - 100
+         Final emotional notes
+      ------------------------------- */
+
+      "Someday, I want us to look back at all these nights of missing each other and smile because we finally made it through the distance. ❤️",
+
+      "Because no matter how many notes I write, I know there will always be another little reason I haven't written down yet.",
+
+      "Because you aren't just someone I miss; you're someone I'm genuinely grateful I got to know.",
+
+      "Because if I could put every good feeling you've given me into this jar, it would never be big enough.",
+
+      "Because you're My Boo—and somehow, that little name carries an entire world of feelings for me."
+
+    ];
+
+
+    /* =====================================================
+       LOCAL STORAGE
+       =====================================================
+
+       This is what makes the progress survive
+       closing and reopening the website.
+    */
+
+
+    const STORAGE_KEY =
+      "myBooLoveJarProgress";
+
+
+    let usedNotes =
+      JSON.parse(
+        localStorage.getItem(STORAGE_KEY)
+      ) || [];
+
+
+    /* =====================================================
+       ELEMENTS
+    ===================================================== */
+
+    const opening =
+      document.getElementById("opening");
+
+    const openButton =
+      document.getElementById("openButton");
+
+    const jar =
+      document.getElementById("jar");
+
+    const pickButton =
+      document.getElementById("pickButton");
+
+    const noteOverlay =
+      document.getElementById("noteOverlay");
+
+    const closeButton =
+      document.getElementById("closeButton");
+
+    const anotherButton =
+      document.getElementById("anotherButton");
+
+    const noteText =
+      document.getElementById("noteText");
+
+    const noteNumber =
+      document.getElementById("noteNumber");
+
+    const noteCount =
+      document.getElementById("noteCount");
+
+    const finished =
+      document.getElementById("finished");
+
+
+    /* =====================================================
+       UPDATE COUNTER
+    ===================================================== */
+
+    function updateCounter() {
+
+      const remaining =
+        loveNotes.length - usedNotes.length;
+
+      noteCount.textContent =
+        remaining;
+
+      if (remaining === 1) {
+
+        document.querySelector(".counter")
+          .innerHTML =
+          `<span id="noteCount">1</span> reason still waiting for you`;
+
+      } else {
+
+        document.querySelector(".counter")
+          .innerHTML =
+          `<span id="noteCount">${remaining}</span> reasons still waiting for you`;
+
+      }
+    }
+
+
+    /* =====================================================
+       SAVE PROGRESS
+    ===================================================== */
+
+    function saveProgress() {
+
+      localStorage.setItem(
+        STORAGE_KEY,
+        JSON.stringify(usedNotes)
+      );
+
+    }
+
+
+    /* =====================================================
+       SHOW RANDOM NOTE
+    ===================================================== */
+
+    function showRandomNote() {
+
+      /* All 100 have been opened */
+
+      if (
+        usedNotes.length >=
+        loveNotes.length
+      ) {
+
+        finished.classList.add("show");
+
+        return;
+      }
+
+
+      /*
+        Find all notes that haven't been used.
+      */
+
+      const availableNotes = [];
+
+      for (
+        let i = 0;
+        i < loveNotes.length;
+        i++
+      ) {
+
+        if (!usedNotes.includes(i)) {
+          availableNotes.push(i);
+        }
+
+      }
+
+
+      /*
+        Choose a random unused note.
+      */
+
+      const randomPosition =
+        Math.floor(
+          Math.random() *
+          availableNotes.length
+        );
+
+      const selectedIndex =
+        availableNotes[randomPosition];
+
+
+      /*
+        Mark it as used.
+      */
+
+      usedNotes.push(
+        selectedIndex
+      );
+
+
+      /*
+        Save immediately.
+
+        So even if she closes the website
+        right after reading the note,
+        the progress is preserved.
+      */
+
+      saveProgress();
+
+
+      /*
+        Display note.
+      */
+
+      noteText.textContent =
+        loveNotes[selectedIndex];
+
+      noteNumber.textContent =
+        `Reason #${selectedIndex + 1}`;
+
+
+      updateCounter();
+
+
+      /*
+        Show popup.
+      */
+
+      noteOverlay.classList.add("show");
+
+
+      /*
+        Restart note animation.
+      */
+
+      const card =
+        document.querySelector(".note-card");
+
+      card.style.animation = "none";
+
+      requestAnimationFrame(() => {
+
+        card.style.animation =
+          "noteAppear 0.45s cubic-bezier(.2,.8,.2,1)";
+
+      });
+
+
+      /*
+        If that was the final note,
+        change the next-button text.
+      */
+
+      if (
+        usedNotes.length >=
+        loveNotes.length
+      ) {
+
+        anotherButton.textContent =
+          "See the final message ♡";
+
+      } else {
+
+        anotherButton.textContent =
+          "Give me another ♡";
+
+      }
+
+    }
+
+
+    /* =====================================================
+       OPEN THE JAR
+    ===================================================== */
+
+    openButton.addEventListener(
+      "click",
+      () => {
+
+        opening.classList.add("hidden");
+
+      }
+    );
+
+
+    /* =====================================================
+       BUTTON EVENTS
+    ===================================================== */
+
+    pickButton.addEventListener(
+      "click",
+      showRandomNote
+    );
+
+
+    jar.addEventListener(
+      "click",
+      showRandomNote
+    );
+
+
+    anotherButton.addEventListener(
+      "click",
+      () => {
+
+        /*
+          Close current note first.
+        */
+
+        noteOverlay.classList.remove("show");
+
+
+        /*
+          Small delay makes the transition
+          feel smoother.
+        */
+
+        setTimeout(
+          showRandomNote,
+          250
+        );
+
+      }
+    );
+
+
+    /* =====================================================
+       CLOSE NOTE
+    ===================================================== */
+
+    closeButton.addEventListener(
+      "click",
+      () => {
+
+        noteOverlay.classList.remove(
+          "show"
+        );
+
+      }
+    );
+
+
+    /*
+      Clicking outside the paper
+      closes the note.
+    */
+
+    noteOverlay.addEventListener(
+      "click",
+      (event) => {
+
+        if (
+          event.target === noteOverlay
+        ) {
+
+          noteOverlay.classList.remove(
+            "show"
+          );
+
+        }
+
+      }
+    );
+
+
+    /*
+      Escape key also closes it.
+    */
+
+    document.addEventListener(
+      "keydown",
+      (event) => {
+
+        if (
+          event.key === "Escape"
+        ) {
+
+          noteOverlay.classList.remove(
+            "show"
+          );
+
+        }
+
+      }
+    );
+
+
+    /* =====================================================
+       FLOATING HEARTS
+    ===================================================== */
+
+    const heartsContainer =
+      document.getElementById("hearts");
+
+
+    const heartSymbols = [
+      "♡",
+      "♥",
+      "♡",
+      "✦",
+      "♥"
+    ];
+
+
+    function createHeart() {
+
+      const heart =
+        document.createElement("div");
+
+      heart.className =
+        "heart";
+
+
+      heart.textContent =
+        heartSymbols[
+          Math.floor(
+            Math.random() *
+            heartSymbols.length
+          )
+        ];
+
+
+      heart.style.left =
+        Math.random() * 100 + "%";
+
+
+      heart.style.fontSize =
+        12 +
+        Math.random() * 18 +
+        "px";
+
+
+      heart.style.animationDuration =
+        8 +
+        Math.random() * 8 +
+        "s";
+
+
+      heartsContainer.appendChild(
+        heart
+      );
+
+
+      setTimeout(
+        () => heart.remove(),
+        18000
+      );
+
+    }
+
+
+    /*
+      Initial hearts
+    */
+
+    for (
+      let i = 0;
+      i < 15;
+      i++
+    ) {
+
+      createHeart();
+
+    }
+
+
+    /*
+      New hearts periodically
+    */
+
+    setInterval(
+      createHeart,
+      1000
+    );
+
+
+    /* =====================================================
+       INITIAL STATE
+    ===================================================== */
+
+    updateCounter();
+
+
+    /*
+      If somehow stored progress contains
+      invalid indexes, clean it up.
+    */
+
+    usedNotes =
+      usedNotes.filter(
+        index =>
+          Number.isInteger(index) &&
+          index >= 0 &&
+          index < loveNotes.length
+      );
+
+
+    saveProgress();
+
+  </script>
+
+</body>
+</html>
